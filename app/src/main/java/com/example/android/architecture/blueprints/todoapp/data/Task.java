@@ -40,7 +40,8 @@ public final class Task {
 
     @Nullable
     private final String mDescription;
-
+    @Nullable
+    private final String mImageUrl;
     private final boolean mCompleted;
 
     private int mInternalId;
@@ -51,10 +52,11 @@ public final class Task {
      * @param title
      * @param description
      */
-    public Task(@Nullable String title, @Nullable String description) {
+    public Task(@Nullable String title, @Nullable String description, String imageUrl) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
+        mImageUrl = imageUrl;
         mCompleted = false;
     }
 
@@ -66,10 +68,11 @@ public final class Task {
      * @param description
      * @param id of the class
      */
-    public Task(@Nullable String title, @Nullable String description, String id) {
+    public Task(@Nullable String title, @Nullable String description, String imageUrl, String id) {
         mId = id;
         mTitle = title;
         mDescription = description;
+        mImageUrl = imageUrl;
         mCompleted = false;
     }
 
@@ -80,10 +83,11 @@ public final class Task {
      * @param description
      * @param completed
      */
-    public Task(@Nullable String title, @Nullable String description, boolean completed) {
+    public Task(@Nullable String title, @Nullable String description, String imageUrl, boolean completed) {
         mId = UUID.randomUUID().toString();
         mTitle = title;
         mDescription = description;
+        mImageUrl = imageUrl;
         mCompleted = completed;
     }
 
@@ -96,10 +100,11 @@ public final class Task {
      * @param id
      * @param completed
      */
-    public Task(@Nullable String title, @Nullable String description, String id, boolean completed) {
+    public Task(@Nullable String title, @Nullable String description, String id, String imageUrl, boolean completed) {
         mId = id;
         mTitle = title;
         mDescription = description;
+        mImageUrl = imageUrl;
         mCompleted = completed;
     }
 
@@ -115,18 +120,21 @@ public final class Task {
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_TITLE));
         String description = cursor.getString(cursor.getColumnIndexOrThrow(
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_DESCRIPTION));
+        String imageUrl = cursor.getString(cursor.getColumnIndexOrThrow(
+                TasksPersistenceContract.TaskEntry.COLUMN_NAME_IMAGEURL));
         boolean completed = cursor.getInt(cursor.getColumnIndexOrThrow(
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_COMPLETED)) == 1;
-        return new Task(title, description, entryId, completed);
+        return new Task(title, description,imageUrl, entryId, completed);
     }
 
     public static Task from(ContentValues values) {
         String entryId = values.getAsString(TasksPersistenceContract.TaskEntry.COLUMN_NAME_ENTRY_ID);
         String title = values.getAsString(TasksPersistenceContract.TaskEntry.COLUMN_NAME_TITLE);
         String description = values.getAsString(TasksPersistenceContract.TaskEntry.COLUMN_NAME_DESCRIPTION);
+        String imageUrl = values.getAsString(TasksPersistenceContract.TaskEntry.COLUMN_NAME_IMAGEURL);
         boolean completed = values.getAsInteger(TasksPersistenceContract.TaskEntry.COLUMN_NAME_COMPLETED) == 1;
 
-        return new Task(title, description, entryId, completed);
+        return new Task(title, description,imageUrl, entryId, completed);
     }
 
     @NonNull
@@ -152,7 +160,10 @@ public final class Task {
     public String getDescription() {
         return mDescription;
     }
-
+    @Nullable
+    public String getImageUrl() {
+        return mImageUrl;
+    }
     public boolean isCompleted() {
         return mCompleted;
     }
@@ -173,12 +184,14 @@ public final class Task {
         Task task = (Task) o;
         return Objects.equal(mId, task.mId) &&
                Objects.equal(mTitle, task.mTitle) &&
-               Objects.equal(mDescription, task.mDescription);
+               Objects.equal(mDescription, task.mDescription)
+                &&
+                Objects.equal(mImageUrl, task.mImageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mId, mTitle, mDescription);
+        return Objects.hashCode(mId, mTitle, mDescription, mImageUrl);
     }
 
     @Override
