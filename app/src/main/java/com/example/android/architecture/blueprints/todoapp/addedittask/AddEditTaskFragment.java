@@ -125,7 +125,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                 if(magicalCamera != null) {
                     if (magicalCamera.getPhoto() != null) {
                         //save the photo in your memory external or internal of your device
-                        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+                        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "student", MagicalCamera.JPEG, true);
                         if (path != null) {
                             Toast.makeText(activity,
                                     "The photo is save manual in device, please check this path: " + path,
