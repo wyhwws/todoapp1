@@ -140,6 +140,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
             @Override
             public void onClick(View v) {
                 mPresenter.addNewTask();
+
             }
         });
 

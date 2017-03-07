@@ -38,10 +38,35 @@
         <EditText
             android:id="@+id/add_task_description"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="50dp"
             android:gravity="top"
             android:hint="@string/description_hint" />
 
+
+        <Button
+            android:id="@+id/btntakephoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="    Take Photo    " />
+
+        <Button
+            android:id="@+id/btnselectedphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Selected photo" />
+        <Button
+            android:id="@+id/saveImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Save the photo" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
     </LinearLayout>
 </ScrollView>
 
