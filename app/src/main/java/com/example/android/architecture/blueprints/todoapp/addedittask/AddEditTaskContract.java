@@ -33,11 +33,13 @@ public interface AddEditTaskContract {
         void setTitle(String title);
 
         void setDescription(String description);
+
+       // void setImageUrl(String imageUrl);
     }
 
     interface Presenter extends BasePresenter {
 
-        void saveTask(String title, String description);
+        void saveTask(String title, String description, String imageUrl);
 
         void populateTask();
     }

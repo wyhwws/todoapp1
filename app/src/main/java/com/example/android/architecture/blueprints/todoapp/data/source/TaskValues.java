@@ -28,6 +28,7 @@ public class TaskValues {
         values.put(TasksPersistenceContract.TaskEntry.COLUMN_NAME_ENTRY_ID, task.getId());
         values.put(TasksPersistenceContract.TaskEntry.COLUMN_NAME_TITLE, task.getTitle());
         values.put(TasksPersistenceContract.TaskEntry.COLUMN_NAME_DESCRIPTION, task.getDescription());
+        values.put(TasksPersistenceContract.TaskEntry.COLUMN_NAME_IMAGEURL, task.getImageUrl());
         values.put(TasksPersistenceContract.TaskEntry.COLUMN_NAME_COMPLETED, task.isCompleted() ? 1 : 0);
         return values;
     }

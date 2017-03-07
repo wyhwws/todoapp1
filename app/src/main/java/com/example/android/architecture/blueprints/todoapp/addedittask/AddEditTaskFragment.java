@@ -52,6 +52,8 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     private TextView mTitle;
 
     private TextView mDescription;
+
+   private String mImageUrl;
     //this is the image view for show your picture taken
     private ImageView imageView;
     //button to take picture
@@ -95,7 +97,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString());
+                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString(),mImageUrl);
             }
         });
     }
@@ -126,6 +128,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                     if (magicalCamera.getPhoto() != null) {
                         //save the photo in your memory external or internal of your device
                         String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "student", MagicalCamera.JPEG, true);
+                        mImageUrl = path;
                         if (path != null) {
                             Toast.makeText(activity,
                                     "The photo is save manual in device, please check this path: " + path,
@@ -193,6 +196,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public void setDescription(String description) {
         mDescription.setText(description);
     }
+
     private boolean notNullNotFill(String validate){
         if(validate != null){
             if(!validate.trim().equals("")){

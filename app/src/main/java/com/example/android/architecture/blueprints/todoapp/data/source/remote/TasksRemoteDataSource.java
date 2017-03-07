@@ -37,8 +37,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     static {
         TASKS_SERVICE_DATA = new LinkedHashMap<>(2);
-        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.");
-        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!");
+        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.","Ground looks good, no foundation work required.");
+        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!","Ground looks good, no foundation work required.");
     }
 
     // Prevent direct instantiation.
@@ -52,8 +52,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
         return INSTANCE;
     }
 
-    private static void addTask(String title, String description) {
-        Task newTask = new Task(title, description);
+    private static void addTask(String title, String description, String imageUrl) {
+        Task newTask = new Task(title, description,imageUrl);
         TASKS_SERVICE_DATA.put(newTask.getId(), newTask);
     }
 

@@ -27,6 +27,7 @@ import com.example.android.architecture.blueprints.todoapp.data.Task;
 import com.example.android.architecture.blueprints.todoapp.data.source.LoaderProvider;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksDataSource;
 import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository;
+import com.google.common.base.Strings;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -75,11 +76,11 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
     }
 
     @Override
-    public void saveTask(String title, String description) {
+    public void saveTask(String title, String description, String imageUrl) {
         if (isNewTask()) {
-            createTask(title, description);
+            createTask(title, description, imageUrl);
         } else {
-            updateTask(title, description);
+            updateTask(title, description,imageUrl);
         }
     }
 
@@ -116,8 +117,8 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         return mTaskId == null;
     }
 
-    private void createTask(String title, String description) {
-        Task newTask = new Task(title, description);
+    private void createTask(String title, String description, String imageUrl) {
+        Task newTask = new Task(title, description, imageUrl);
         if (newTask.isEmpty()) {
             mAddTaskView.showEmptyTaskError();
         } else {
@@ -126,11 +127,11 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         }
     }
 
-    private void updateTask(String title, String description) {
+    private void updateTask(String title, String description, String imageUrl) {
         if (isNewTask()) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
-        mTasksRepository.saveTask(new Task(title, description, mTaskId));
+        mTasksRepository.saveTask(new Task(title, description, imageUrl,  mTaskId));
         mAddTaskView.showTasksList(); // After an edit, go back to the list.
     }
 
