@@ -103,6 +103,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
             Task task = Task.from(data);
             mAddTaskView.setDescription(task.getDescription());
             mAddTaskView.setTitle(task.getTitle());
+            mAddTaskView.setImageUrl(task.getImageUrl());
         } else {
             // NO-OP, add mode.
         }

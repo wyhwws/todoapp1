@@ -22,6 +22,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -53,7 +54,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
 
     private TextView mDescription;
 
-   private String mImageUrl;
+   private TextView mImageUrl;
     //this is the image view for show your picture taken
     private ImageView imageView;
     //button to take picture
@@ -97,7 +98,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString(),mImageUrl);
+                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString(),mImageUrl.getText().toString());
             }
         });
     }
@@ -109,6 +110,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
         mTitle = (TextView) root.findViewById(R.id.add_task_title);
         mDescription = (TextView) root.findViewById(R.id.add_task_description);
+        mImageUrl = (TextView) root.findViewById(R.id.add_task_imageUrl);
         //obtain the activity of the parent
         activity = getActivity();
 
@@ -128,10 +130,11 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                     if (magicalCamera.getPhoto() != null) {
                         //save the photo in your memory external or internal of your device
                         String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "student", MagicalCamera.JPEG, true);
-                        mImageUrl = path;
-                        if (path != null) {
+
+                        mImageUrl.setText(path);
+                        if (mImageUrl != null) {
                             Toast.makeText(activity,
-                                    "The photo is save manual in device, please check this path: " + path,
+                                    "The photo is save manual in device, please check this path: " + mImageUrl,
                                     Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(activity,
@@ -196,7 +199,10 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public void setDescription(String description) {
         mDescription.setText(description);
     }
-
+    @Override
+    public void setImageUrl(String imageUrl) {
+        mImageUrl.setText(imageUrl);
+    }
     private boolean notNullNotFill(String validate){
         if(validate != null){
             if(!validate.trim().equals("")){

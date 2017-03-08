@@ -59,6 +59,7 @@ public final class TasksPersistenceContract {
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_ENTRY_ID,
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_TITLE,
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_DESCRIPTION,
+                TasksPersistenceContract.TaskEntry.COLUMN_NAME_IMAGEURL,
                 TasksPersistenceContract.TaskEntry.COLUMN_NAME_COMPLETED};
 
         public static Uri buildTasksUriWith(long id) {

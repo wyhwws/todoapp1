@@ -34,7 +34,7 @@ public interface AddEditTaskContract {
 
         void setDescription(String description);
 
-       // void setImageUrl(String imageUrl);
+       void setImageUrl(String imageUrl);
     }
 
     interface Presenter extends BasePresenter {

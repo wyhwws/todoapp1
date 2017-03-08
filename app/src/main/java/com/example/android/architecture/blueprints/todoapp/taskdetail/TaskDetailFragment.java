@@ -57,7 +57,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     private TextView mDetailTitle;
 
     private TextView mDetailDescription;
-
+    private TextView mDetailImageUrl;
     private CheckBox mDetailCompleteStatus;
 
     public static TaskDetailFragment newInstance(@Nullable String taskId) {
@@ -82,6 +82,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         setHasOptionsMenu(true);
         mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
         mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
+        mDetailImageUrl = (TextView) root.findViewById(R.id.task_detail_imageUrl);
         mDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
 
         // Set up floating action button
@@ -130,7 +131,10 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     public void hideDescription() {
         mDetailDescription.setVisibility(View.GONE);
     }
-
+    @Override
+    public void hideImageUrl() {
+        mDetailImageUrl.setVisibility(View.GONE);
+    }
     @Override
     public void hideTitle() {
         mDetailTitle.setVisibility(View.GONE);
@@ -141,7 +145,11 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         mDetailDescription.setVisibility(View.VISIBLE);
         mDetailDescription.setText(description);
     }
-
+    @Override
+    public void showImageUrl(@NonNull String imageUrl) {
+        mDetailImageUrl.setVisibility(View.VISIBLE);
+        mDetailImageUrl.setText(imageUrl);
+    }
     @Override
     public void showCompletionStatus(final boolean complete) {
         Preconditions.checkNotNull(mDetailCompleteStatus);
