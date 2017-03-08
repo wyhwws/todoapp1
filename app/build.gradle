@@ -73,6 +73,7 @@ dependencies {
     compile('com.frosquivel:magicalcamera:5.0.3@aar') {
         transitive = false;
     }
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     // Dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"

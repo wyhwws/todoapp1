@@ -19,6 +19,7 @@ package com.example.android.architecture.blueprints.todoapp.taskdetail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -32,12 +33,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.android.architecture.blueprints.todoapp.R;
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskActivity;
 import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTaskFragment;
 import com.google.common.base.Preconditions;
+
+import java.io.File;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -58,6 +63,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
 
     private TextView mDetailDescription;
     private TextView mDetailImageUrl;
+    private ImageView imageView;
     private CheckBox mDetailCompleteStatus;
 
     public static TaskDetailFragment newInstance(@Nullable String taskId) {
@@ -83,6 +89,8 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
         mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
         mDetailImageUrl = (TextView) root.findViewById(R.id.task_detail_imageUrl);
+        imageView = (ImageView)root.findViewById(R.id.task_detail_imageView);
+
         mDetailCompleteStatus = (CheckBox) root.findViewById(R.id.task_detail_complete);
 
         // Set up floating action button
@@ -149,6 +157,8 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     public void showImageUrl(@NonNull String imageUrl) {
         mDetailImageUrl.setVisibility(View.VISIBLE);
         mDetailImageUrl.setText(imageUrl);
+        File file = new File(imageUrl);
+        Glide.with(this).load(file).into(imageView);
     }
     @Override
     public void showCompletionStatus(final boolean complete) {

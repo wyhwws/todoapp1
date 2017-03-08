@@ -53,4 +53,12 @@
         android:layout_height="wrap_content"
         android:text="Medium Text"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    <ImageView
+        android:id="@+id/task_detail_imageView"
+        android:layout_toRightOf="@id/task_detail_complete"
+        android:layout_below="@id/task_detail_imageUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </RelativeLayout>
