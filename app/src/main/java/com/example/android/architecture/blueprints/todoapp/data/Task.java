@@ -155,6 +155,14 @@ public final class Task {
             return mDescription;
         }
     }
+    @Nullable
+    public String getImageForList() {
+        if (!Strings.isNullOrEmpty(mImageUrl)) {
+            return mImageUrl;
+        } else {
+            return mDescription;
+        }
+    }
 
     @Nullable
     public String getDescription() {
