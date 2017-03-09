@@ -15,45 +15,49 @@
   -->
 
 <resources>
-    <string name="app_name">TO-DO-MVP-CONTENTPROVIDERS</string>
-    <string name="add_task">New TO-DO</string>
-    <string name="edit_task">Edit TO-DO</string>
-    <string name="task_marked_complete">Task marked complete</string>
-    <string name="task_marked_active">Task marked active</string>
-    <string name="loading_tasks_error">Error while loading tasks</string>
-    <string name="completed_tasks_cleared">Completed tasks cleared</string>
-    <string name="menu_filter">Filter</string>
-    <string name="menu_clear">Clear completed</string>
-    <string name="menu_delete_task">Delete task</string>
-    <string name="navigation_view_header_title">TO-DOs</string>
-    <string name="title_hint">Title</string>
-    <string name="description_hint">Enter your TO-DO here.</string>
-    <string name="empty_task_message">TO DOs cannot be empty</string>
-    <string name="successfully_saved_task_message">TO-DO saved</string>
-    <string name="list_title">TO-DO List</string>
-    <string name="statistics_title">Statistics</string>
-    <string name="statistics_no_tasks">You have no tasks.</string>
-    <string name="statistics_active_tasks">Active tasks:</string>
-    <string name="statistics_completed_tasks">Completed tasks:</string>
-    <string name="statistics_error">Error loading statistics.</string>
-    <string name="no_data">No data</string>
-    <string name="loading">LOADING</string>
-
+    <string name="app_name">教师助手</string>
+    <string name="add_task">新学生</string>
+    <string name="edit_task">编辑学生</string>
+    <string name="task_marked_complete">已经标注</string>
+    <string name="task_marked_active">没标注</string>
+    <string name="loading_tasks_error">错误加载</string>
+    <string name="completed_tasks_cleared">标注清除</string>
+    <string name="menu_filter">过滤</string>
+    <string name="menu_clear">清除标注</string>
+    <string name="menu_delete_task">删除学生</string>
+    <string name="navigation_view_header_title">学生们</string>
+    <string name="title_hint">姓名</string>
+    <string name="description_hint">输入学生情况.</string>
+    <string name="image_url_hint">单击保存相片输入学生相片地址.</string>
+    <string name="history_hint">输入单科成绩.</string>
+    <string name="empty_task_message">姓名不能为空</string>
+    <string name="successfully_saved_task_message">已保存学生</string>
+    <string name="list_title">学生列表</string>
+    <string name="statistics_title">情况汇报</string>
+    <string name="statistics_no_tasks">你没学生.</string>
+    <string name="statistics_active_tasks">没标注学生</string>
+    <string name="statistics_completed_tasks">已标注学生</string>
+    <string name="statistics_error">情况加载错误.</string>
+    <string name="no_data">无数据</string>
+    <string name="loading">等待</string>
+    <string name="takephone">照相</string>
+    <string name="selectphone">选择相片</string>
+    <string name="savephone">保存相片</string>
     <string-array name="list_tasks_array">
         <item>@string/nav_all</item>
         <item>@string/nav_active</item>
         <item>@string/nav_completed</item>
     </string-array>
-    <string name="nav_all">All</string>
-    <string name="nav_active">Active</string>
-    <string name="nav_completed">Completed</string>
-    <string name="label_all">All TO-DOs</string>
-    <string name="label_active">Active TO-DOs</string>
-    <string name="label_completed">Completed TO-DOs</string>
-    <string name="no_tasks_all">You have no TO-DOs!</string>
-    <string name="no_tasks_active">You have no active TO-DOs!</string>
-    <string name="no_tasks_completed">You have no completed TO-DOs!</string>
-    <string name="no_tasks_add">Add a TO-DO item +</string>
-    <string name="refresh">Refresh</string>
+    <string name="nav_all">所有</string>
+    <string name="nav_active">没标注</string>
+    <string name="nav_completed">已标注</string>
+    <string name="label_all">所有学生</string>
+    <string name="label_active">没装</string>
+    <string name="label_completed">已标注学生</string>
+    <string name="no_tasks_all">你没有学生!</string>
+    <string name="no_tasks_active">你全标注!</string>
+    <string name="no_tasks_completed">你全没标注!</string>
+    <string name="no_tasks_add">加一学生+</string>
+    <string name="refresh">刷新</string>
 
 </resources>

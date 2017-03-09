@@ -39,7 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="top"
-            android:hint="@string/description_hint" />
+            android:inputType="number"
+            android:hint="@string/history_hint" />
         <EditText
             android:id="@+id/add_task_description"
             android:layout_width="match_parent"
@@ -51,27 +52,27 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="top"
-            android:hint="@string/description_hint" />
+            android:hint="@string/image_url_hint" />
 
         <Button
             android:id="@+id/btntakephoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="    Take Photo    " />
+            android:text="@string/takephone" />
 
         <Button
             android:id="@+id/btnselectedphoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Selected photo" />
+            android:text="@string/selectphone" />
         <Button
             android:id="@+id/saveImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Save the photo" />
+            android:text="@string/savephone" />
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"

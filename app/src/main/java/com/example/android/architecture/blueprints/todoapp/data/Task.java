@@ -166,6 +166,13 @@ public final class Task {
             return mDescription;
         }
     }
+    public String getHistoryForList() {
+        if (!Strings.isNullOrEmpty(mHistory)) {
+            return mHistory;
+        } else {
+            return mDescription;
+        }
+    }
     @Nullable
     public String getImageForList() {
         if (!Strings.isNullOrEmpty(mImageUrl)) {
