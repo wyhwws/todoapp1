@@ -113,6 +113,7 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter, Loader
         mTask = Task.from(data);
 
         String title = mTask.getTitle();
+        String history = mTask.getHistory();
         String description = mTask.getDescription();
         String imageUrl = mTask.getImageUrl();
         if (Strings.isNullOrEmpty(title)) {
@@ -120,7 +121,11 @@ public class TaskDetailPresenter implements TaskDetailContract.Presenter, Loader
         } else {
             mTaskDetailView.showTitle(title);
         }
-
+        if (Strings.isNullOrEmpty(history)) {
+            mTaskDetailView.hideHistory();
+        } else {
+            mTaskDetailView.showHistory(history);
+        }
         if (Strings.isNullOrEmpty(description)) {
             mTaskDetailView.hideDescription();
         } else {

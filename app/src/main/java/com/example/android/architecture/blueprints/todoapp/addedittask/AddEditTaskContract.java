@@ -31,7 +31,7 @@ public interface AddEditTaskContract {
         void showTasksList();
 
         void setTitle(String title);
-
+        void setHistory(String history);
         void setDescription(String description);
 
        void setImageUrl(String imageUrl);
@@ -39,7 +39,7 @@ public interface AddEditTaskContract {
 
     interface Presenter extends BasePresenter {
 
-        void saveTask(String title, String description, String imageUrl);
+        void saveTask(String title,String history, String description, String imageUrl);
 
         void populateTask();
     }

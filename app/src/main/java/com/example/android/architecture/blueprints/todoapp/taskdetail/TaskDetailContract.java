@@ -33,7 +33,9 @@ public interface TaskDetailContract {
         void hideTitle();
 
         void showTitle(String title);
+        void hideHistory();
 
+        void showHistory(String history);
         void hideDescription();
 
         void showDescription(String description);

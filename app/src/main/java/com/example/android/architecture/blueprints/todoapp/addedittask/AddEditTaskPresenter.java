@@ -76,11 +76,11 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
     }
 
     @Override
-    public void saveTask(String title, String description, String imageUrl) {
+    public void saveTask(String title,String history, String description, String imageUrl) {
         if (isNewTask()) {
-            createTask(title, description, imageUrl);
+            createTask(title,history, description, imageUrl);
         } else {
-            updateTask(title, description,imageUrl);
+            updateTask(title,history, description,imageUrl);
         }
     }
 
@@ -103,6 +103,7 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
             Task task = Task.from(data);
             mAddTaskView.setDescription(task.getDescription());
             mAddTaskView.setTitle(task.getTitle());
+            mAddTaskView.setHistory(task.getHistory());
             mAddTaskView.setImageUrl(task.getImageUrl());
         } else {
             // NO-OP, add mode.
@@ -118,8 +119,8 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         return mTaskId == null;
     }
 
-    private void createTask(String title, String description, String imageUrl) {
-        Task newTask = new Task(title, description, imageUrl);
+    private void createTask(String title,String history, String description, String imageUrl) {
+        Task newTask = new Task(title,history, description, imageUrl);
         if (newTask.isEmpty()) {
             mAddTaskView.showEmptyTaskError();
         } else {
@@ -128,11 +129,11 @@ public class AddEditTaskPresenter implements AddEditTaskContract.Presenter,
         }
     }
 
-    private void updateTask(String title, String description, String imageUrl) {
+    private void updateTask(String title,String history, String description, String imageUrl) {
         if (isNewTask()) {
             throw new RuntimeException("updateTask() was called but task is new.");
         }
-        mTasksRepository.saveTask(new Task(title, description, imageUrl,  mTaskId));
+        mTasksRepository.saveTask(new Task(title, history,description, imageUrl,  mTaskId));
         mAddTaskView.showTasksList(); // After an edit, go back to the list.
     }
 

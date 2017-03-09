@@ -37,8 +37,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     static {
         TASKS_SERVICE_DATA = new LinkedHashMap<>(2);
-        addTask("Build tower in Pisa", "Ground looks good, no foundation work required.","Ground looks good, no foundation work required.");
-        addTask("Finish bridge in Tacoma", "Found awesome girders at half the cost!","Ground looks good, no foundation work required.");
+        addTask("Build tower in Pisa", "Build tower in Pisa", "Ground looks good, no foundation work required.","Ground looks good, no foundation work required.");
+        addTask("Finish bridge in Tacoma","Build tower in Pisa",  "Found awesome girders at half the cost!","Ground looks good, no foundation work required.");
     }
 
     // Prevent direct instantiation.
@@ -52,8 +52,8 @@ public class TasksRemoteDataSource implements TasksDataSource {
         return INSTANCE;
     }
 
-    private static void addTask(String title, String description, String imageUrl) {
-        Task newTask = new Task(title, description,imageUrl);
+    private static void addTask(String title,String history, String description, String imageUrl) {
+        Task newTask = new Task(title,history, description,imageUrl);
         TASKS_SERVICE_DATA.put(newTask.getId(), newTask);
     }
 
@@ -90,7 +90,7 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void completeTask(@NonNull Task task) {
-        Task completedTask = new Task(task.getTitle(), task.getDescription(), task.getId(), true);
+        Task completedTask = new Task(task.getTitle(),task.getHistory(), task.getDescription(), task.getId(), true);
         TASKS_SERVICE_DATA.put(task.getId(), completedTask);
     }
 
@@ -102,7 +102,7 @@ public class TasksRemoteDataSource implements TasksDataSource {
 
     @Override
     public void activateTask(@NonNull Task task) {
-        Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId());
+        Task activeTask = new Task(task.getTitle(),task.getHistory(), task.getDescription(), task.getId());
         TASKS_SERVICE_DATA.put(task.getId(), activeTask);
     }
 

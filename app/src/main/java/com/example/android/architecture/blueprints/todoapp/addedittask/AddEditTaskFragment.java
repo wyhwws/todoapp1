@@ -51,7 +51,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     private AddEditTaskContract.Presenter mPresenter;
 
     private TextView mTitle;
-
+    private TextView mHistory;
     private TextView mDescription;
 
    private TextView mImageUrl;
@@ -98,7 +98,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.saveTask(mTitle.getText().toString(), mDescription.getText().toString(),mImageUrl.getText().toString());
+                mPresenter.saveTask(mTitle.getText().toString(),mHistory.getText().toString(), mDescription.getText().toString(),mImageUrl.getText().toString());
             }
         });
     }
@@ -109,11 +109,10 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
         mTitle = (TextView) root.findViewById(R.id.add_task_title);
+        mHistory = (TextView) root.findViewById(R.id.add_task_history);
         mDescription = (TextView) root.findViewById(R.id.add_task_description);
         mImageUrl = (TextView) root.findViewById(R.id.add_task_imageUrl);
-        //obtain the activity of the parent
-        activity = getActivity();
-
+        activity= getActivity();
 
 
 //instance magical camera
@@ -194,7 +193,10 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public void setTitle(String title) {
         mTitle.setText(title);
     }
-
+    @Override
+    public void setHistory(String history) {
+        mTitle.setText(history);
+    }
     @Override
     public void setDescription(String description) {
         mDescription.setText(description);

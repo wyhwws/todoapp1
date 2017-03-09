@@ -60,7 +60,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     private TaskDetailContract.Presenter mPresenter;
 
     private TextView mDetailTitle;
-
+    private TextView mDetailHistory;
     private TextView mDetailDescription;
     private TextView mDetailImageUrl;
     private ImageView imageView;
@@ -87,6 +87,7 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
         View root = inflater.inflate(R.layout.taskdetail_frag, container, false);
         setHasOptionsMenu(true);
         mDetailTitle = (TextView) root.findViewById(R.id.task_detail_title);
+        mDetailHistory = (TextView) root.findViewById(R.id.task_detail_history);
         mDetailDescription = (TextView) root.findViewById(R.id.task_detail_description);
         mDetailImageUrl = (TextView) root.findViewById(R.id.task_detail_imageUrl);
         imageView = (ImageView)root.findViewById(R.id.task_detail_imageView);
@@ -134,7 +135,10 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
             mDetailDescription.setText(getString(R.string.loading));
         }
     }
-
+    @Override
+    public void hideHistory() {
+        mDetailHistory.setVisibility(View.GONE);
+    }
     @Override
     public void hideDescription() {
         mDetailDescription.setVisibility(View.GONE);
@@ -147,7 +151,11 @@ public class TaskDetailFragment extends Fragment implements TaskDetailContract.V
     public void hideTitle() {
         mDetailTitle.setVisibility(View.GONE);
     }
-
+    @Override
+    public void showHistory(@NonNull String history) {
+        mDetailHistory.setVisibility(View.VISIBLE);
+        mDetailHistory.setText(history);
+    }
     @Override
     public void showDescription(@NonNull String description) {
         mDetailDescription.setVisibility(View.VISIBLE);
